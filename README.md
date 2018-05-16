@@ -2,6 +2,7 @@
 ```
 using vs2017 for project
 ```
+# 实验报告
 ## 实验内容
 模拟电梯调度算法，实现对磁盘的驱动调度。
 ## 实验目的
@@ -59,3 +60,7 @@ using vs2017 for project
 “请求 I/O”表
 进程名 柱面号 物理记录号 方向
 
+# 添加内容（历史数据）
+- Add main.cpp and IO_Table Class
+- Realize random float number generator in main.cpp
+- Construct the IO_Table private part
