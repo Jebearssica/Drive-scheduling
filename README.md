@@ -64,3 +64,5 @@ using vs2017 for project
 - Add main.cpp and IO_Table Class
 - Realize random float number generator in main.cpp
 - Construct the IO_Table private part
+
+-basic procedure construction complete

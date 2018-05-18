@@ -25,6 +25,9 @@
   <ItemGroup>
     <ClInclude Include="IO_Table.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\README.md" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{0C048DEF-5390-4B9B-ABED-5BC1F9648B7E}</ProjectGuid>
