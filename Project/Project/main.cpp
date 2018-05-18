@@ -1,62 +1,117 @@
 #include<random>
-#include<iostream>
+#include<cmath>
 #include"IO_Table.h"
 using namespace std;
-void Run_Driven() {
 
+//结构
+struct Queue {
+  IO_Table *Head = NULL;            //存储的进程
+  Queue *Next = NULL;               //使用链表连接下一个地址
+  Queue(IO_Table *a, Queue *b) {    //构造函数
+    this->Head = a;
+    this->Next = b;
+  }
+};
+
+//初始化全局变量
+bool Move_Dir = true;         //移臂方向（true为里 false为外）
+int Now_Cylinder = 0;         //当前柱面
+int Now_Phy = 0;              //当前物理记录
+IO_Table *Now;                //当前执行的进程
+Queue *Order;                 //进程等待队列首队列
+Queue *Nail;                  //进程等待队列末队列
+
+bool Judge_Order() {
+  char judge;
+  cout << "Continue? Y/N" << endl;
+  cin >> judge;
+  if (judge == 'y'&&judge == 'Y')
+    return true;
+  else
+    return false;
 }
-void Select_By_Cylinder(bool Small,IO_Table *Table) {
-  int minus = 0, sum = 0;
-  if (Small) {          //搜索小于的最大值
-    for (size_t i = 0; i < Table->length(); i++) {
-      if (abs(Table[i] - Now_Cylinder)>minus) {
-        
-      }
-    }
+
+//模拟“接受请求”过程
+void Accept_Order(Queue *tmp) {
+  string Name;
+  IO_Table *Table;
+  int Cylinder, Track, Phy_Address;
+  if (Judge_Order()) {
+    cout << "输入进程名 柱面 磁道 地址名" << endl;
+    cin >> Name;
+    cin >> Cylinder >> Track >> Phy_Address;
+    Table = new IO_Table(Name, Cylinder, Track, Phy_Address);     //创建IO表
+    tmp->Next = new Queue(Table, NULL);
+    delete Table;
   }
 }
-void Accept_Order(IO_Table *Table) {
-  //模拟“接受请求”过程
-
-  if (Has_Order) {
-    string Name;
-    int Phy_Address;
-    cout << "输入进程名 地址名" << endl;
-    cin >> Name >> Phy_Address;
-    Table = new IO_Table(Name, Phy_Address);     //创建IO表
-    bool Move_Dis = true;                       //里移为true
-    int Now_Cylinder = 0, Now_Phy = 0;
-
-    if (Now_Cylinder == Queue[i].Cylinder_Number) {
-      return i;
+Queue* Select_By_Cylinder(int Small, int Cylinder) {
+  int minus = 0, sum = INT16_MAX;
+  Queue *tmp = Order;
+  Queue *result = Order;
+  //搜索距离最短的
+  //控制参数Small 1：小于中搜最大 -1：大于中搜最小
+  while (tmp) {
+    minus = Small * (tmp->Head->Return_Cylinder() - Cylinder);
+    if (minus > 0) {
+      continue;
     }
     else {
-      if (Move_Dis == true) {
+      if (sum > abs(minus)) {
+        sum = abs(minus);
+        result = tmp;
+      }
+    }
+    tmp = tmp->Next;
+  }
+  return result;
+
+}
+bool Judge_For_MaxMin(int Small,int Cylinder) {//同理small 1：min -1：max
+  Queue *tmp = Order;
+  while (tmp) {
+    if (Small*(Cylinder - tmp->Head->Return_Cylinder()) > 0) {
+      
+    }
+  }
+
+}
+void Run_Driven(IO_Table *Table) {
+  Queue *Tmp_For_Delete;
+  if (Order) {
+
+
+    if (Now_Cylinder == Order->Head->Return_Cylinder()) {
+      /*以磁道作为选择项目筛选最短
+
+      */
+    }
+    else {
+      if (Move_Dir == true) {
         if (Has_Big()) {
-          Select_By_Cylinder();
+          Select_By_Cylinder(-1, Now_Cylinder);
         }
         else {
-          Move_Dis = false;
-          Select_By_Cylinder();
+          Move_Dir = false;
+          Select_By_Cylinder(1, Now_Cylinder);
         }
       }
       else {
         if (Has_Small()) {
-          Select_By_Cylinder();
+          Select_By_Cylinder(1, Now_Cylinder);
         }
         else {
-          Mov_Dis = false;
-          Select_By_Cylinder();
+          Move_Dir = false;
+          Select_By_Cylinder(-1, Now_Cylinder);
         }
       }
     }
-    Table = new IO_Table(Now_Cylinder, Now_Phy);
-    /*run for the desk
-
-    */
-    /*delete the selecter to the table
-    
-    */
+    /*run for the desk*/
+    Table->Print_Table(Move_Dir);
+    /*delete the selecter to the table*/
+    Tmp_For_Delete = Order;
+    Order = Tmp_For_Delete->Next;
+    delete Tmp_For_Delete;
   }
   else {
     return;
@@ -68,7 +123,6 @@ int main() {
   IO_Table *Table = NULL;
   while (true) {
     //生成随机数
-    char Judge;
     default_random_engine e;
     uniform_real_distribution<float> u(0.0, 1.0);
     flag = u(e);
@@ -76,11 +130,9 @@ int main() {
       Run_Driven();
     }
     else {
-      Accept_Order();
+      Accept_Order(Nail);
     }
-    cout << "Continue? Y/N" << endl;
-    cin >> Judge;
-    if (Judge != 'Y' || Judge != 'y')
+    if (!Judge_Order())
       break;
   }
 }
