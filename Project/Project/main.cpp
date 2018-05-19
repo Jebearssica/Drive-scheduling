@@ -67,14 +67,18 @@ Queue* Select_By_Cylinder(int Small, int Cylinder) {
   return result;
 
 }
-bool Judge_For_MaxMin(int Small,int Cylinder) {//同理small 1：min -1：max
+//返回true 代表存在大于或小于的 false 不存在
+bool Judge_For_MaxMin(int Small,int Cylinder) {//同理small 1：小于中搜最大 -1：大于中搜最小
   Queue *tmp = Order;
   while (tmp) {
     if (Small*(Cylinder - tmp->Head->Return_Cylinder()) > 0) {
-      
+      return true;
+    }
+    else {
+      tmp = tmp->Next;
     }
   }
-
+  return false;
 }
 void Run_Driven(IO_Table *Table) {
   Queue *Tmp_For_Delete;
@@ -88,7 +92,7 @@ void Run_Driven(IO_Table *Table) {
     }
     else {
       if (Move_Dir == true) {
-        if (Has_Big()) {
+        if (Judge_For_MaxMin(-1, Now_Cylinder)) {
           Select_By_Cylinder(-1, Now_Cylinder);
         }
         else {
@@ -97,7 +101,7 @@ void Run_Driven(IO_Table *Table) {
         }
       }
       else {
-        if (Has_Small()) {
+        if (Judge_For_MaxMin(1, Now_Cylinder)) {
           Select_By_Cylinder(1, Now_Cylinder);
         }
         else {

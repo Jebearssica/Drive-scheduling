@@ -66,9 +66,9 @@ using vs2017 for project
 - Construct the IO_Table private part
 -basic procedure construction complete
 -Realize Accept_Order & Select_By_Cylinder function
+-complete function Judge_For_MaxMin 
 
 -Waiting for complete:
-* function:Judge_For_MaxMin
 * procedure:Run_Driven
 * Data:for testing
 
