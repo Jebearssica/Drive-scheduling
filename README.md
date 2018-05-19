@@ -69,6 +69,7 @@ using vs2017 for project
 -complete function Judge_For_MaxMin 
 
 -Waiting for complete:
+* Adding new function Select_By_Track()
 * procedure:Run_Driven
 * Data:for testing
 

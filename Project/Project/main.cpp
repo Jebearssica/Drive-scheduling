@@ -67,8 +67,17 @@ Queue* Select_By_Cylinder(int Small, int Cylinder) {
   return result;
 
 }
+
+//Õ®π˝¥≈µ¿…∏—°
+Queue* Select_By_Track(int Track) {
+  Queue *tmp = Order;
+  while (tmp) {
+
+  }
+
+}
 //∑µªÿtrue ¥˙±Ì¥Ê‘⁄¥Û”⁄ªÚ–°”⁄µƒ false ≤ª¥Ê‘⁄
-bool Judge_For_MaxMin(int Small,int Cylinder) {//Õ¨¿Ìsmall 1£∫–°”⁄÷–À—◊Ó¥Û -1£∫¥Û”⁄÷–À—◊Ó–°
+bool Judge_For_MaxMin(int Small, int Cylinder) {//Õ¨¿Ìsmall 1£∫–°”⁄÷–À—◊Ó¥Û -1£∫¥Û”⁄÷–À—◊Ó–°
   Queue *tmp = Order;
   while (tmp) {
     if (Small*(Cylinder - tmp->Head->Return_Cylinder()) > 0) {
@@ -80,8 +89,9 @@ bool Judge_For_MaxMin(int Small,int Cylinder) {//Õ¨¿Ìsmall 1£∫–°”⁄÷–À—◊Ó¥Û -1£∫¥
   }
   return false;
 }
-void Run_Driven(IO_Table *Table) {
+void Run_Driven() {
   Queue *Tmp_For_Delete;
+  Queue *Tmp;
   if (Order) {
 
 
@@ -93,25 +103,25 @@ void Run_Driven(IO_Table *Table) {
     else {
       if (Move_Dir == true) {
         if (Judge_For_MaxMin(-1, Now_Cylinder)) {
-          Select_By_Cylinder(-1, Now_Cylinder);
+          Tmp = Select_By_Cylinder(-1, Now_Cylinder);
         }
         else {
           Move_Dir = false;
-          Select_By_Cylinder(1, Now_Cylinder);
+          Tmp = Select_By_Cylinder(1, Now_Cylinder);
         }
       }
       else {
         if (Judge_For_MaxMin(1, Now_Cylinder)) {
-          Select_By_Cylinder(1, Now_Cylinder);
+          Tmp = Select_By_Cylinder(1, Now_Cylinder);
         }
         else {
           Move_Dir = false;
-          Select_By_Cylinder(-1, Now_Cylinder);
+          Tmp = Select_By_Cylinder(-1, Now_Cylinder);
         }
       }
     }
     /*run for the desk*/
-    Table->Print_Table(Move_Dir);
+    Tmp->Head->Print_Table(Move_Dir);
     /*delete the selecter to the table*/
     Tmp_For_Delete = Order;
     Order = Tmp_For_Delete->Next;
@@ -121,6 +131,7 @@ void Run_Driven(IO_Table *Table) {
     return;
   }
 }
+
 int main() {
   //≥ı ºªØ
   float flag = 0;
