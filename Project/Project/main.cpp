@@ -13,6 +13,10 @@ struct Queue {
     this->Front = b;
     this->Next = c;
   }
+  Queue() {
+    this->Head = NULL;
+    this->Front = this->Next = NULL;
+  }
 };
 
 //初始化全局变量
@@ -75,11 +79,12 @@ Queue* Select_By_Cylinder(int Small, int Cylinder) {
 //通过磁道筛选
 Queue* Select_By_Track(int Track) {
   Queue *tmp = Order;
-  Queue *Result;
+  Queue *Result = NULL;
   int minus = INT16_MAX;
   while (tmp) {
     if (minus > abs(Track - tmp->Head->Return_Track())) {
       minus = abs(Track - tmp->Head->Return_Track());
+      Result = new Queue();
       Result = tmp;
     }
     tmp = tmp->Next;
