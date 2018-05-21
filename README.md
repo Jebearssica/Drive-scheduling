@@ -69,9 +69,9 @@ using vs2017 for project
 - Complete function Judge_For_MaxMin()
 - Adding new function Select_By_Track()
 - Change the construction of the Queue(into double link list)
+- Change the part of delete Queue
 
 -Waiting for complete:
-* Change the part of delete Queue
 * procedure:Run_Driven
 * Data:for testing
 

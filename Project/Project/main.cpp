@@ -45,6 +45,7 @@ void Accept_Order(Queue *tmp) {
     cin >> Cylinder >> Track >> Phy_Address;
     Table = new IO_Table(Name, Cylinder, Track, Phy_Address);     //´´½¨IO±í
     tmp->Next = new Queue(Table, tmp, NULL);
+    Nail = tmp->Next;
     delete Table;
   }
 }
@@ -130,8 +131,9 @@ void Run_Driven() {
     /*run for the desk*/
     Tmp->Head->Print_Table(Move_Dir);
     /*delete the selecter to the table*/
-    Tmp_For_Delete = Order;
-    Order = Tmp_For_Delete->Next;
+    Tmp_For_Delete = Tmp;
+    Tmp->Front->Next = Tmp->Next;
+    Tmp->Next->Front = Tmp->Front;
     delete Tmp_For_Delete;
   }
   else {
