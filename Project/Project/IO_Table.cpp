@@ -13,6 +13,10 @@ void IO_Table::Print_Table(bool direction) {
 int IO_Table::Return_Cylinder() {
   return this->Cylinder_Number;
 }
+
+int IO_Table::Return_Track() {
+  return this->Track_Number;
+}
 IO_Table::IO_Table()
 {
 }

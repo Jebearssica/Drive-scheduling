@@ -71,10 +71,16 @@ Queue* Select_By_Cylinder(int Small, int Cylinder) {
 //通过磁道筛选
 Queue* Select_By_Track(int Track) {
   Queue *tmp = Order;
+  Queue *Result;
+  int minus = INT16_MAX;
   while (tmp) {
-
+    if (minus > abs(Track - tmp->Head->Return_Track())) {
+      minus = abs(Track - tmp->Head->Return_Track());
+      Result = tmp;
+    }
+    tmp = tmp->Next;
   }
-
+  return Result;
 }
 //返回true 代表存在大于或小于的 false 不存在
 bool Judge_For_MaxMin(int Small, int Cylinder) {//同理small 1：小于中搜最大 -1：大于中搜最小

@@ -65,11 +65,11 @@ using vs2017 for project
 - Realize random float number generator in main.cpp
 - Construct the IO_Table private part
 -basic procedure construction complete
--Realize Accept_Order & Select_By_Cylinder function
--complete function Judge_For_MaxMin 
+-Realize function Accept_Order() & Select_By_Cylinder()
+-complete function Judge_For_MaxMin()
+-Adding new function Select_By_Track()
 
 -Waiting for complete:
-* Adding new function Select_By_Track()
 * procedure:Run_Driven
 * Data:for testing
 

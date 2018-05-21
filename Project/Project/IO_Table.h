@@ -14,6 +14,7 @@ private:
 public:
   void Print_Table(bool direction);
   int Return_Cylinder();
+  int Return_Track();
   IO_Table();
   IO_Table(std::string name, int cylinder, int track, int phy);
   ~IO_Table();
