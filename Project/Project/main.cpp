@@ -17,6 +17,7 @@ struct Queue {
 bool Move_Dir = true;         //移臂方向（true为里 false为外）
 int Now_Cylinder = 0;         //当前柱面
 int Now_Phy = 0;              //当前物理记录
+int Now_Track = 0;            //当前磁道
 IO_Table *Now;                //当前执行的进程
 Queue *Order;                 //进程等待队列首队列
 Queue *Nail;                  //进程等待队列末队列
@@ -102,9 +103,7 @@ void Run_Driven() {
 
 
     if (Now_Cylinder == Order->Head->Return_Cylinder()) {
-      /*以磁道作为选择项目筛选最短
-
-      */
+      Tmp = Select_By_Track(Now_Track);
     }
     else {
       if (Move_Dir == true) {

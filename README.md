@@ -70,6 +70,8 @@ using vs2017 for project
 -Adding new function Select_By_Track()
 
 -Waiting for complete:
+* Change the construction of the Queue
+	* Change into double link list
 * procedure:Run_Driven
 * Data:for testing
 
