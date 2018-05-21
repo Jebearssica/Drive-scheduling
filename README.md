@@ -64,14 +64,14 @@ using vs2017 for project
 - Add main.cpp and IO_Table Class
 - Realize random float number generator in main.cpp
 - Construct the IO_Table private part
--basic procedure construction complete
--Realize function Accept_Order() & Select_By_Cylinder()
--complete function Judge_For_MaxMin()
--Adding new function Select_By_Track()
+- Basic procedure construction complete
+- Realize function Accept_Order() & Select_By_Cylinder()
+- Complete function Judge_For_MaxMin()
+- Adding new function Select_By_Track()
+- Change the construction of the Queue(into double link list)
 
 -Waiting for complete:
-* Change the construction of the Queue
-	* Change into double link list
+* Change the part of delete Queue
 * procedure:Run_Driven
 * Data:for testing
 

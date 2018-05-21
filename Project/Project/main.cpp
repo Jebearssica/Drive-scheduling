@@ -6,10 +6,12 @@ using namespace std;
 //结构
 struct Queue {
   IO_Table *Head = NULL;            //存储的进程
+  Queue *Front = NULL;
   Queue *Next = NULL;               //使用链表连接下一个地址
-  Queue(IO_Table *a, Queue *b) {    //构造函数
+  Queue(IO_Table *a, Queue *b, Queue*c) {    //构造函数
     this->Head = a;
-    this->Next = b;
+    this->Front = b;
+    this->Next = c;
   }
 };
 
@@ -42,7 +44,7 @@ void Accept_Order(Queue *tmp) {
     cin >> Name;
     cin >> Cylinder >> Track >> Phy_Address;
     Table = new IO_Table(Name, Cylinder, Track, Phy_Address);     //创建IO表
-    tmp->Next = new Queue(Table, NULL);
+    tmp->Next = new Queue(Table, tmp, NULL);
     delete Table;
   }
 }
