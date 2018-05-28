@@ -75,8 +75,7 @@ using vs2017 for project
 	* Restruct "struct Queue" and change into class
 	* Realize the function in "class Queue" --- Insert & Initialize
 - 2018-5-28
-	* Changing the structure of the Project(Due to the restruction of the "struct Queue")
+	* complete changing the structure of the Project(Due to the restruction of the "struct Queue")
 -Waiting for complete:
-* Changing the structure of the Project(Due to the restruction of the "struct Queue")
 * Data for testing
 
