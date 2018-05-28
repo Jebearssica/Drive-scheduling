@@ -21,9 +21,11 @@
   <ItemGroup>
     <ClCompile Include="IO_Table.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Queue.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IO_Table.h" />
+    <ClInclude Include="Queue.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\README.md" />

@@ -1,23 +1,10 @@
 #include<random>
 #include<cmath>
-#include"IO_Table.h"
+#include"Queue.h"
 using namespace std;
 
 //结构
-struct Queue {
-  IO_Table *Head = NULL;            //存储的进程
-  Queue *Front = NULL;
-  Queue *Next = NULL;               //使用链表连接下一个地址
-  Queue(IO_Table *a, Queue *b, Queue*c) {    //构造函数
-    this->Head = a;
-    this->Front = b;
-    this->Next = c;
-  }
-  Queue() {
-    this->Head = NULL;
-    this->Front = this->Next = NULL;
-  }
-};
+
 
 //初始化全局变量
 bool Move_Dir = true;         //移臂方向（true为里 false为外）
@@ -32,7 +19,7 @@ bool Judge_Order() {
   char judge;
   cout << "Continue? Y/N" << endl;
   cin >> judge;
-  if (judge == 'y'&&judge == 'Y')
+  if (judge == 'y'||judge == 'Y')
     return true;
   else
     return false;
@@ -42,13 +29,20 @@ bool Judge_Order() {
 void Accept_Order(Queue *tmp) {
   string Name;
   IO_Table *Table;
+  IO_Table *Table_For_Head;
+  Queue *tmp_Next;
   int Cylinder, Track, Phy_Address;
   if (Judge_Order()) {
+    if (tmp == NULL) {        //创立头节点
+      Table_For_Head = new IO_Table("Head", 0, 0, 0);
+      tmp = new Queue(Table_For_Head, NULL, tmp);
+    }
     cout << "输入进程名 柱面 磁道 地址名" << endl;
     cin >> Name;
     cin >> Cylinder >> Track >> Phy_Address;
     Table = new IO_Table(Name, Cylinder, Track, Phy_Address);     //创建IO表
-    tmp->Next = new Queue(Table, tmp, NULL);
+    tmp = new Queue(Table, tmp, NULL);
+    tmp->Next->Front = tmp;
     Nail = tmp->Next;
     delete Table;
   }
@@ -152,7 +146,7 @@ int main() {
   IO_Table *Table = NULL;
   while (true) {
     //生成随机数
-    default_random_engine e;
+    default_random_engine e(time(NULL));
     uniform_real_distribution<float> u(0.0, 1.0);
     flag = u(e);
     if (flag > 0.5) {
@@ -161,6 +155,7 @@ int main() {
     else {
       Accept_Order(Nail);
     }
+    cout << "Run off the process" << endl;
     if (!Judge_Order())
       break;
   }

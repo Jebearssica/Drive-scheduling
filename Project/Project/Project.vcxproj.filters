@@ -21,9 +21,15 @@
     <ClCompile Include="IO_Table.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Queue.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IO_Table.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Queue.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

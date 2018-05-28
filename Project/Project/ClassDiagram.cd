@@ -3,15 +3,14 @@
   <Class Name="IO_Table">
     <Position X="1.75" Y="0.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAgEAAAAAEAAQAAAFAAAAARAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAgEIAAAAEAAQAAAFAAAAARAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>IO_Table.h</FileName>
     </TypeIdentifier>
   </Class>
   <Struct Name="Queue">
     <Position X="4.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AgAAAAAAAAAAAIAAAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>main.cpp</FileName>
+      <NewMemberFileName>main.cpp</NewMemberFileName>
     </TypeIdentifier>
   </Struct>
   <Font Name="Microsoft YaHei UI" Size="9" />

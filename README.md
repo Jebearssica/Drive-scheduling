@@ -71,7 +71,12 @@ using vs2017 for project
 - Change the construction of the Queue(into double link list)
 - Change the part of delete Queue
 - Complete procedure Run_Driven
-
+- 2018-5-25
+	* Restruct "struct Queue" and change into class
+	* Realize the function in "class Queue" --- Insert & Initialize
+- 2018-5-28
+	* Changing the structure of the Project(Due to the restruction of the "struct Queue")
 -Waiting for complete:
+* Changing the structure of the Project(Due to the restruction of the "struct Queue")
 * Data for testing
 
